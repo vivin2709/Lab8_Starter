@@ -10,7 +10,9 @@ export const storage = {};
  */
 storage.getItems = () => {
   // localStorage only stores strings so you must JSON.parse() any arrays
+  console.log('testing for LS');
   return JSON.parse(localStorage.getItem('cart')) || [];
+  
 };
 
 /**
