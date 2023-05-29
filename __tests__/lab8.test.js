@@ -108,9 +108,9 @@ describe('Basic user flow for Website', () => {
     // At this point he item 'cart' in localStorage should be 
     // '[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]', check to make sure it is
     const cartValue = await page.evaluate(() => {
-      return JSON.parse(localStorage.getItem('cart'));
+      return localStorage.getItem('cart');
     });
-    const expectedCart = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+    const expectedCart = '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]';
     expect(cartValue).toBe(expectedCart);
   });
 
@@ -168,10 +168,11 @@ describe('Basic user flow for Website', () => {
     // At this point he item 'cart' in localStorage should be '[]', check to make sure it is
     //const cartValue = localStorage.getItem('cart');
     await page.reload();
+
     const cartValue = await page.evaluate(() => {
-      return JSON.parse(localStorage.getItem('cart'));
+      return localStorage.getItem('cart');
     });
-    const expectedCart = [];
+    const expectedCart = '[]';
     expect(cartValue).toBe(expectedCart);
 
   });
